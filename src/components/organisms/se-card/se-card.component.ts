@@ -71,6 +71,14 @@ export class SeCardComponent {
     }
   }
 
+  handleEdit(): void {
+    this.onEdit.emit();
+  }
+
+  handleDelete(): void {
+    this.onDelete.emit();
+  }
+
   onActionButton(buttonIndex: number) {
     switch (buttonIndex) {
       case 1:
