@@ -95,24 +95,24 @@
         </div>
 
         <div class="se-card__bottom">
-            <se-button *ngIf="actionButtonCount >= 1" [label]="actionButtons[0]?.label || 'Action 1'"
-                [type]="actionButtons[0]?.type || 'primary'" [variant]="actionButtons[0]?.variant || 'filled'"
-                [size]="actionButtons[0]?.size || 'small'" (clicked)="onActionButton(1)">
+            <se-button *ngIf="actionButtonCount >= 1" [label]="actionButtons[0].label || 'Action 1'"
+                [type]="actionButtons[0].type || 'primary'" [variant]="actionButtons[0].variant || 'filled'"
+                [size]="actionButtons[0].size || 'small'" (clicked)="onActionButton(1)">
             </se-button>
 
-            <se-button *ngIf="actionButtonCount >= 2" [label]="actionButtons[1]?.label || 'Action 2'"
-                [type]="actionButtons[1]?.type || 'standard'" [variant]="actionButtons[1]?.variant || 'outline'"
-                [size]="actionButtons[1]?.size || 'small'" (clicked)="onActionButton(2)">
+            <se-button *ngIf="actionButtonCount >= 2" [label]="actionButtons[1].label || 'Action 2'"
+                [type]="actionButtons[1].type || 'standard'" [variant]="actionButtons[1].variant || 'outline'"
+                [size]="actionButtons[1].size || 'small'" (clicked)="onActionButton(2)">
             </se-button>
 
-            <se-button *ngIf="actionButtonCount >= 3" [label]="actionButtons[2]?.label || 'Action 3'"
-                [type]="actionButtons[2]?.type || 'standard'" [variant]="actionButtons[2]?.variant || 'outline'"
-                [size]="actionButtons[2]?.size || 'small'" (clicked)="onActionButton(3)">
+            <se-button *ngIf="actionButtonCount >= 3" [label]="actionButtons[2].label || 'Action 3'"
+                [type]="actionButtons[2].type || 'standard'" [variant]="actionButtons[2].variant || 'outline'"
+                [size]="actionButtons[2].size || 'small'" (clicked)="onActionButton(3)">
             </se-button>
 
-            <se-button *ngIf="actionButtonCount >= 4" [label]="actionButtons[3]?.label || 'Action 4'"
-                [type]="actionButtons[3]?.type || 'standard'" [variant]="actionButtons[3]?.variant || 'outline'"
-                [size]="actionButtons[3]?.size || 'small'" (clicked)="onActionButton(4)">
+            <se-button *ngIf="actionButtonCount >= 4" [label]="actionButtons[3].label || 'Action 4'"
+                [type]="actionButtons[3].type || 'standard'" [variant]="actionButtons[3].variant || 'outline'"
+                [size]="actionButtons[3].size || 'small'" (clicked)="onActionButton(4)">
             </se-button>
         </div>
 
