@@ -1,0 +1,21 @@
+<button
+  [class]="buttonClasses"
+  [disabled]="isDisabled"
+  [attr.aria-label]="ariaLabel || label"
+  [attr.aria-disabled]="isDisabled"
+  (click)="handleClick($event)"
+  type="button">
+  
+  <img 
+    *ngIf="iconPath"
+    [src]="iconPath"
+    class="se-button__icon"
+    alt=""
+    aria-hidden="true">
+    
+  <span 
+    *ngIf="showLabel"
+    class="se-button__label">
+    {{label}}
+  </span>
+</button>

@@ -1,0 +1,51 @@
+<div class="se-dropdown-selector">
+  <div class="se-dropdown-selector__label" *ngIf="label">
+    {{ label }}
+    <span class="se-dropdown-selector__required" *ngIf="required">*</span>
+    <span class="se-dropdown-selector__info-icon" *ngIf="infoIcon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="16" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+      </svg>
+    </span>
+  </div>
+
+  <div class="se-dropdown-selector__container" (clickOutside)="handleClickOutside($event)">
+    <div 
+      class="se-dropdown-selector__selected"
+      [class.se-dropdown-selector__selected--disabled]="disabled"
+      [class.se-dropdown-selector__selected--error]="errorText"
+      (click)="toggleDropdown()"
+    >
+      <span class="se-dropdown-selector__placeholder" *ngIf="showPlaceholder">
+        {{ placeholder }}
+      </span>
+      <span *ngIf="!showPlaceholder">{{ displayValue }}</span>
+      <span class="se-dropdown-selector__arrow"></span>
+    </div>
+
+    <ul 
+      class="se-dropdown-selector__options" 
+      *ngIf="isOpen"
+      [class.se-dropdown-selector__options--scrollable]="isScrollable"
+    >
+      <li
+        *ngFor="let option of options"
+        class="se-dropdown-selector__option"
+        [class.se-dropdown-selector__option--selected]="isSelected(option)"
+        (click)="selectOption(option)"
+      >
+        {{ option.label }}
+        <span 
+          class="se-dropdown-selector__checkmark"
+          *ngIf="multiple && isSelected(option)"
+        ></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="se-dropdown-selector__error-text" *ngIf="errorText">
+    {{ errorText }}
+  </div>
+</div>

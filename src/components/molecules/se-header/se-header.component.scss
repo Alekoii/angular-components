@@ -1,0 +1,153 @@
+@import '../../../styles/styles.scss';
+
+.se-header {
+  width: 100%;
+  background-color: $white;
+  border-bottom: $border-nano solid $super-light-grey;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $gap-medium $gap-large;
+    margin: 0 auto;
+  }
+
+  &__logo-section {
+    display: flex;
+    align-items: center;
+    gap: $gap-medium;
+  }
+
+  &__divider {
+    width: 1px;
+    height: 24px;
+    background-color: $super-light-grey;
+  }
+
+  &__title {
+    @extend %font-h4-regular;
+    color: $se-life-green;
+    margin: 0;
+  }
+
+  &__nav {
+    flex: 1;
+    margin: 0 $gap-xlarge;
+  }
+
+  &__nav-list {
+    display: flex;
+    gap: $gap-xlarge;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__nav-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    @extend %font-p-small-regular;
+    color: $se-black;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $se-life-green;
+    }
+  }
+
+  &__tools {
+    display: flex;
+    align-items: center;
+    gap: $gap-large;
+  }
+
+  &__tools-icons {
+    display: flex;
+    align-items: center;
+    gap: $gap-large;
+    cursor: pointer;
+  }
+
+  &__tool-icon {
+    width: $size-small;
+    height: $size-small;
+    color: $se-dark-grey;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $se-life-green;
+    }
+  }
+
+  &__avatar-section {
+    display: flex;
+    align-items: center;
+    gap: $gap-medium;
+  }
+
+  &__nav {
+    position: relative;
+  }
+
+  &__nav-list {
+    display: flex;
+    gap: $gap-large;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__nav-button {
+    display: flex;
+    align-items: center;
+    gap: $gap-nano;
+    background: none;
+    border: none;
+    padding: $gap-medium;
+    cursor: pointer;
+    @extend %font-p-small-regular;
+    color: $se-black;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $se-life-green;
+    }
+  }
+
+  &__nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: $white;
+    border: 1px solid $super-light-grey;
+    border-radius: $border-radius-micro;
+    min-width: 200px;
+    z-index: 1000;
+    padding: $gap-medium 0;
+  }
+
+  &__nav-dropdown-item {
+    display: block;
+    width: 100%;
+    padding: $gap-medium $gap-large;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    @extend %font-p-small-regular;
+    color: $se-black;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $se-life-green-04;
+      color: $se-life-green;
+    }
+  }
+
+}

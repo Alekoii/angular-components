@@ -1,0 +1,64 @@
+@import '../../../styles/styles.scss';
+
+.se-search {
+  width: 100%;
+
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &__input-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    width: 100%;
+    padding: $gap-medium;
+    padding-left: 2.5rem;
+    padding-right: $gap-medium;
+    border: 1px solid $super-light-grey;
+    border-radius: $border-radius-micro;
+    @extend %font-p-small-regular;
+    color: $anthracite-grey;
+    background-color: $white;
+    transition: all 0.3s ease;
+
+    &--with-clear {
+      padding-right: 2.5rem;
+    }
+
+    &:focus {
+      border-color: $se-life-green;
+      outline: none;
+    }
+
+    &:disabled {
+      background-color: $super-light-grey;
+      cursor: not-allowed;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    width: $size-nano;
+    height: $size-nano;
+    color: $se-dark-grey;
+
+    &--search {
+      left: $gap-medium;
+    }
+
+    &--clear {
+      right: $gap-medium;
+      cursor: pointer;
+      
+      &:hover {
+        color: $red;
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+@import '../../../styles/styles.scss';
+
+.se-stepper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: $gap-medium;
+
+    &__step {
+        display: flex;
+        align-items: center;
+        flex: 1;
+
+        &:last-child {
+            flex: 0;
+
+            .se-stepper__connector {
+                display: none;
+            }
+        }
+    }
+
+    &__node {
+        display: flex;
+        align-items: center;
+        gap: $gap-nano;
+        cursor: pointer;
+
+        &--disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+
+    &__indicator {
+        width: $size-micro;
+        height: $size-micro;
+        padding: 4px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @extend %font-p-small-regular;
+
+        &--completed {
+            background-color: $se-life-green;
+            color: $white;
+        }
+
+        &--current {
+            background-color: $white;
+            border: $border-nano solid $se-life-green;
+            color: $se-life-green;
+        }
+
+        &--upcoming {
+            background-color: $white;
+            border: $border-nano solid $se-dark-grey;
+            color: $se-dark-grey;
+        }
+    }
+
+    &__label {
+        @extend %font-p-small-regular;
+        color: $anthracite-grey;
+
+        &--completed {
+            color: $se-life-green;
+        }
+
+        &--current {
+            color: $se-life-green;
+        }
+
+        &--upcoming {
+            color: $se-dark-grey;
+        }
+    }
+
+    &__connector {
+        flex: 1;
+        height: $border-nano;
+        margin: 0 $gap-medium;
+        background-color: $super-light-grey;
+
+        &--completed {
+            background-color: $se-life-green;
+        }
+    }
+}

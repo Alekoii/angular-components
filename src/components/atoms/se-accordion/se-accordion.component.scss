@@ -1,0 +1,84 @@
+@import '../../../styles/styles.scss';
+
+.se-accordion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &--secondary {
+    background-color: $ultra-light-grey-2;
+  }
+}
+
+.se-accordion__item {
+  border-bottom: $border-nano solid $super-light-grey;
+  transition: all 0.3s ease;
+
+  &--disabled {
+    .se-accordion__header {
+      cursor: not-allowed;
+      color: $light-grey;
+
+      .se-accordion__icon {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &:hover:not(&--disabled) {
+    background-color: $super-light-grey;
+  }
+
+  &--expanded {
+    .se-accordion__icon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.se-accordion__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $gap-medium;
+  cursor: pointer;
+  @extend %font-p-small-regular;
+  color: $anthracite-grey;
+
+  &:focus {
+    outline: $border-nano solid $dark-sky-blue;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+.se-accordion__title {
+  @extend %font-p-small-regular;
+}
+
+.se-accordion__icon {
+  width: $size-nano;
+  height: $size-nano;
+  transition: transform 0.3s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23333333'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.se-accordion__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+
+  &--expanded {
+    max-height: none;
+  }
+}
+
+.se-accordion__content-wrapper {
+  padding: $gap-medium;
+  @extend %font-p-small-regular;
+  color: $anthracite-grey;
+}

@@ -1,0 +1,9 @@
+@import '../../../styles/styles.scss';
+
+.se-table {
+    &--cell {
+        border: 1p solid $medium-grey;
+        padding: $gap-medium $gap-nano;
+        color: $se-black;
+    }
+}

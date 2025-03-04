@@ -1,0 +1,122 @@
+<div class="date-picker">
+  <div class="date-picker__input">
+    <input 
+      [value]="displayValue"
+      readonly
+      class="date-picker__field"
+      (click)="toggleCalendar($event)"
+      [placeholder]="placeholder"
+    />
+    <button 
+      class="date-picker__calendar-button" 
+      type="button"
+      (click)="toggleCalendar($event)"
+      aria-label="Toggle calendar"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+        <path d="M14 2h-2V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2C.9 2 0 2.9 0 4v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H2V7h12v7zM2 4v2h12V4H2z"/>
+      </svg>
+    </button>
+  </div>
+
+  <div *ngIf="isOpen" class="date-picker__popup">
+    <header class="date-picker__header">
+      <button 
+        class="date-picker__nav-button" 
+        type="button"
+        (click)="previousMonth()"
+      >
+        ←
+      </button>
+      
+      <div class="date-picker__selectors">
+        <select 
+          [(ngModel)]="currentMonth" 
+          (change)="updateCalendar()" 
+          class="date-picker__select"
+        >
+          <option *ngFor="let month of months; let i = index" [value]="i">
+            {{month}}
+          </option>
+        </select>
+        <select 
+          [(ngModel)]="currentYear" 
+          (change)="updateCalendar()"
+          class="date-picker__select"
+        >
+          <option *ngFor="let year of years" [value]="year">
+            {{year}}
+          </option>
+        </select>
+      </div>
+
+      <button 
+        class="date-picker__nav-button"
+        type="button" 
+        (click)="nextMonth()"
+      >
+        →
+      </button>
+    </header>
+
+    <div class="date-picker__calendar">
+      <div 
+        *ngFor="let day of weekDays" 
+        class="date-picker__weekday"
+      >
+        {{day}}
+      </div>
+
+      <button 
+        *ngFor="let day of calendarDays"
+        type="button"
+        class="date-picker__day"
+        [class.date-picker__day--selected]="day.isSelected"
+        [class.date-picker__day--in-range]="day.isInRange"
+        [class.date-picker__day--other-month]="!day.isCurrentMonth"
+        [class.date-picker__day--today]="day.isToday"
+        [disabled]="day.isDisabled"
+        (click)="selectDate(day)"
+      >
+        {{day.date.getDate()}}
+      </button>
+    </div>
+
+    <div *ngIf="showTimePicker" class="date-picker__time">
+      <div class="date-picker__time-inputs">
+        <input 
+          type="number" 
+          [(ngModel)]="selectedHour" 
+          min="1" 
+          max="12" 
+          class="date-picker__time-input" 
+        />
+        <span>:</span>
+        <input 
+          type="number" 
+          [(ngModel)]="selectedMinute" 
+          min="0" 
+          max="59" 
+          class="date-picker__time-input" 
+        />
+        <button 
+          type="button"
+          class="date-picker__meridian-button" 
+          (click)="toggleMeridian()"
+        >
+          {{meridian}}
+        </button>
+      </div>
+    </div>
+
+    <div class="date-picker__actions">
+      <button 
+        type="button"
+        class="date-picker__apply-button"
+        (click)="applySelection()"
+      >
+        Apply
+      </button>
+    </div>
+  </div>
+</div>

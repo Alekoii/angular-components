@@ -1,0 +1,32 @@
+@import '../../../styles/styles.scss';
+
+.se-notification {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  
+  &__icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    width: $size-small;
+    height: $size-small;
+    object-fit: contain;
+  }
+
+  &__badge {
+    position: absolute;
+    bottom: 12px;
+    left: 10px;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

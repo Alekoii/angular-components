@@ -1,0 +1,24 @@
+<nav 
+  class="se-tab-bar"
+  [class.se-tab-bar--vertical]="layout === 'vertical'"
+  [class.se-tab-bar--horizontal]="layout === 'horizontal'"
+  role="tablist">
+  
+  <button
+    *ngFor="let tab of tabs"
+    [class]="getTabClasses(tab)"
+    role="tab"
+    [attr.aria-selected]="activeTabId === tab.id"
+    [attr.aria-disabled]="tab.disabled"
+    [disabled]="tab.disabled"
+    (click)="onTabClick(tab)">
+    {{ tab.title }}
+  </button>
+</nav>
+
+<div 
+  *ngIf="activeTabId" 
+  class="se-tab-bar__content"
+  role="tabpanel">
+  <ng-content></ng-content>
+</div>

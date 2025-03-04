@@ -1,0 +1,40 @@
+<nav class="se-breadcrumb" aria-label="breadcrumb">
+    <ol #breadcrumbList class="se-breadcrumb__list">
+      <ng-container *ngFor="let item of visibleItems; let isLast = last; let isFirst = first">
+        <li class="se-breadcrumb__item" [class.se-breadcrumb__item--active]="isLast">
+          <a *ngIf="!isLast && item.link" [routerLink]="item.link" class="se-breadcrumb__link">{{item.label}}</a>
+          <span *ngIf="!isLast && !item.link" class="se-breadcrumb__text">{{item.label}}</span>
+          <span *ngIf="isLast" class="se-breadcrumb__text">{{item.label}}</span>
+        </li>
+  
+        <li *ngIf="showOverflowMenu && isFirst" class="se-breadcrumb__item se-breadcrumb__overflow">
+          <button 
+            class="se-breadcrumb__overflow-button" 
+            (click)="toggleOverflowMenu()" 
+            (blur)="closeOverflowMenu()"
+            [attr.aria-expanded]="isOverflowMenuOpen"
+            aria-label="Show more breadcrumbs">
+            ...
+          </button>
+          <ul 
+            class="se-breadcrumb__overflow-menu" 
+            [class.se-breadcrumb__overflow-menu--open]="isOverflowMenuOpen"
+            role="menu">
+            <li *ngFor="let overflowItem of overflowItems" 
+                class="se-breadcrumb__overflow-item"
+                role="menuitem">
+              <a *ngIf="overflowItem.link" 
+                 [routerLink]="overflowItem.link" 
+                 class="se-breadcrumb__link"
+                 (click)="closeOverflowMenu()">
+                {{overflowItem.label}}
+              </a>
+              <span *ngIf="!overflowItem.link" class="se-breadcrumb__text">
+                {{overflowItem.label}}
+              </span>
+            </li>
+          </ul>
+        </li>
+      </ng-container>
+    </ol>
+  </nav>

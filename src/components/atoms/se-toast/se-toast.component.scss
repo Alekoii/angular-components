@@ -1,0 +1,101 @@
+@import '../../../styles/styles.scss';
+
+.se-toast {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  max-width: 480px;
+  border: $border-nano solid transparent;
+  border-radius: $border-radius-micro;
+  animation: slideInRight 0.3s ease-in-out forwards;
+  margin-bottom: $gap-medium;
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: $gap-medium $gap-medium $gap-nano $gap-medium;
+  }
+  
+  &__icon {
+    margin-right: $gap-medium;
+  }
+  
+  &__title {
+    @extend %font-p-small-bold;
+    text-transform: capitalize;
+    margin: 0;
+    flex-grow: 1;
+  }
+  
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $anthracite-grey;
+    
+    &:hover {
+      color: $se-dark-grey;
+    }
+  }
+  
+  &__content {
+    @extend %font-p-small-regular;
+    padding: 0 $gap-medium $gap-medium;
+    color: $anthracite-grey;
+  }
+
+  // Type variations
+  &--type {
+    &-success {
+      border-color: $se-life-green;
+      background: $se-life-green-04;
+      
+      .se-toast__title {
+        color: $se-life-green;
+      }
+    }
+    
+    &-error {
+      border-color: $red;
+      background: $red-05;
+      
+      .se-toast__title {
+        color: $red;
+      }
+    }
+    
+    &-warning {
+      border-color: $honeysuckle-orange;
+      background: $honeysuckle-orange-08;
+      
+      .se-toast__title {
+        color: $honeysuckle-orange;
+      }
+    }
+    
+    &-info {
+      border-color: $se-sky-blue;
+      background: $se-sky-blue-05;
+      
+      .se-toast__title {
+        color: $se-sky-blue;
+      }
+    }
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

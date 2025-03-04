@@ -1,0 +1,10 @@
+<div class="se-accordion__header" (click)="toggle()" [attr.aria-expanded]="expanded" [attr.aria-disabled]="disabled">
+  <span class="se-accordion__title">{{title}}</span>
+  <span class="se-accordion__icon"></span>
+</div>
+
+<div class="se-accordion__content" [class.se-accordion__content--expanded]="expanded" role="region">
+  <div class="se-accordion__content-wrapper">
+    <ng-content></ng-content>
+  </div>
+</div>

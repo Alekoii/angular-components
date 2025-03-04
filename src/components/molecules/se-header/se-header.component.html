@@ -1,0 +1,80 @@
+<header class="se-header">
+  <div class="se-header__content">
+    <!-- Logo and Title Section -->
+    <div class="se-header__logo-section">
+      <img [src]="logoSrc" [alt]="logoAlt" class="se-header__logo">
+      <div class="se-header__divider"></div>
+      <h1 *ngIf="header" class="se-header__title">{{ header }}</h1>
+    </div>
+
+    <!-- Navigation Section -->
+    <nav class="se-header__nav" *ngIf="navigationItems.length">
+      <ul class="se-header__nav-list">
+        <li *ngFor="let item of navigationItems">
+          <button class="se-header__nav-button" (click)="onNavClick($event, item)">
+            {{ item.label }}
+            <ng-container *ngIf="hasChildren(item)">
+              <se-icon
+                [src]="'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAyNCIgaGVpZ2h0PSIxMDI0IiB2aWV3Qm94PSIwIDAgMTAyNCAxMDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMTM0IDM0Ny4yQzEyNiAzMzkuMiAxMjYgMzI1LjIgMTM0IDMxNy4yQzEzOCAzMTMuMiAxNDQgMzExLjIgMTQ5IDMxMS4yQzE1NSAzMTEuMiAxNjAgMzEzLjIgMTY0IDMxNy4yTDUxMC42IDY2My41TDg2MCAzMTUuNUM4NjQgMzExLjUgODY5IDMwOS41IDg3NSAzMDkuNUM4ODAgMzA5LjUgODg2IDMxMS41IDg5MCAzMTUuNUM4OTggMzIzLjUgODk4IDMzNy41IDg5MCAzNDUuNUw1MjYuNiA3MDguNUM1MTcuNiA3MTYuNSA1MDQuNiA3MTYuNSA0OTUuNiA3MDguNUwxMzQgMzQ3LjJaIiBmaWxsPSJjdXJyZW50Q29sb3IiLz4KPC9zdmc+'"
+                size="nano"
+                ariaLabel="Toggle menu">
+              </se-icon>
+            </ng-container>
+          </button>
+          
+          <div class="se-header__nav-dropdown" *ngIf="hasChildren(item) && item.isOpen">
+            <button 
+              *ngFor="let child of item.children"
+              class="se-header__nav-dropdown-item"
+              (click)="onDropdownItemClick($event, child)">
+              {{ child.label }}
+            </button>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Tools Section -->
+    <div class="se-header__tools">
+      <!-- Main Icons -->
+      <div class="se-header__tools-icons">
+        <ng-container *ngIf="icon1">
+          <se-icon [src]="icon1" size="small" ariaLabel="Icon 1" (click)="onIconClick(1)"></se-icon>
+        </ng-container>
+        <ng-container *ngIf="icon2">
+          <se-icon [src]="icon2" size="small" ariaLabel="Icon 2" (click)="onIconClick(2)"></se-icon>
+        </ng-container>
+        <ng-container *ngIf="icon3">
+          <se-icon [src]="icon3" size="small" ariaLabel="Icon 3" (click)="onIconClick(3)"></se-icon>
+        </ng-container>
+      </div>
+
+      <!-- Search Section -->
+      <div class="se-header__search-section" *ngIf="hasSearch()">
+        <se-search [placeholder]="searchPlaceholder || ''" (search)="onSearch($event)"></se-search>
+      </div>
+
+      <!-- Avatar Section -->
+      <div class="se-header__avatar-section" *ngIf="hasAvatar()">
+        <se-avatar [firstName]="avatarFirstName" [lastName]="avatarLastName" size="micro"></se-avatar>
+        <ng-container *ngIf="avatarIcon">
+          <se-icon [src]="avatarIcon" size="nano" ariaLabel="Menu" (click)="onIconClick(0)"></se-icon>
+        </ng-container>
+      </div>
+
+      <!-- Additional Icon -->
+      <div class="se-header__tools-icons" *ngIf="icon4">
+        <se-icon [src]="icon4" size="small" ariaLabel="Icon 4" (click)="onIconClick(4)"></se-icon>
+      </div>
+
+      <!-- Notification -->
+      <div class="se-header__tools-icons">
+        <se-notification 
+          [isNotification]="isNotificationEnabled"
+          [badgeNumber]="notificationBadgeNumber"
+          (click)="onNotificationClick($event)"
+        ></se-notification>
+      </div>
+    </div>
+  </div>
+</header>

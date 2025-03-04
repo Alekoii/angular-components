@@ -1,0 +1,130 @@
+@import '../../../styles/styles.scss';
+
+.se-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    border-radius: $border-radius-micro;
+    align-items: center;
+    gap: $gap-nano;
+  
+    &__icon {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+  
+    // Size variations
+    &--size {
+      &--small {
+        padding: $gap-nano $gap-medium;
+        @extend %font-p-body-regular;
+      }
+      &--medium {
+        padding: $gap-medium $gap-large;
+        @extend %font-p-big-regular;
+      }
+      &--large {
+        padding: $gap-large $gap-xlarge;
+        @extend %font-p-big-regular;
+      }
+    }
+  
+    // State variations
+    &--state {
+      &--enabled {
+        opacity: 1;
+      }
+      &--active {
+        transform: translateY(1px);
+      }
+      // &--selected {
+      //   // Add styles for selected state for different variants
+      // }
+      &--disabled {
+        opacity: 0.45;
+        cursor: not-allowed !important;
+      }
+    }
+  
+    // Type variations
+    &--type {
+      &--standard {
+        background-color: $se-dark-grey;
+        border-color: $se-dark-grey;
+      }
+      &--primary {
+        background-color: $se-life-green;
+        border-color: $se-life-green;
+      }
+      &--secondary {
+        background-color: $se-sky-blue;
+        border-color: $se-sky-blue;
+      }
+      &--danger {
+        background-color: $red;
+        border-color: $red;
+      }
+      &--warning {
+        background-color: $honeysuckle-orange;
+        border-color: $honeysuckle-orange;
+      }
+    }
+
+    // variant variations
+    &--variant {
+        &--filled {
+            color: $white;
+            &.se-button--type--standard{
+                &:hover { background-color: $super-dark-grey; }
+            }
+            &.se-button--type--primary{
+                &:hover { background-color: $super-life-green; }
+            }
+            &.se-button--type--secondary{
+                &:hover { background-color: $super-sky-blue; }
+            }
+            &.se-button--type--warning{
+                &:hover { opacity: 0.85; }
+            }
+            &.se-button--type--danger{
+                &:hover { opacity: 0.85; }
+            }
+        }
+        &--outline {
+          background-color: $white;
+            &.se-button--type--standard{
+                border: 1px solid $se-dark-grey;
+                color: $se-dark-grey;
+            }
+            &.se-button--type--primary{
+                border: 1px solid $se-life-green;
+                color: $se-life-green;
+            }
+            &.se-button--type--secondary{
+                border: 1px solid $se-sky-blue;
+                color: $se-sky-blue;
+            }
+            &.se-button--type--warning{
+                border: 1px solid $honeysuckle-orange;
+                color: $honeysuckle-orange;
+            }
+            &.se-button--type--danger{
+                border: 1px solid $red;
+                color: $red;
+            }
+            &:hover { opacity: 0.85; }
+        }
+      }
+  
+    // Icon position
+    &--icon-left {
+      flex-direction: row;
+    }
+    &--icon-right {
+      flex-direction: row-reverse;
+    }
+  }

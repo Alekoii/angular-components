@@ -1,0 +1,282 @@
+@import '../../../styles/styles.scss';
+
+.date-picker {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    font-family: $font-stack;
+  
+    &__input {
+      position: relative;
+      width: 100%;
+    }
+  
+    &__field {
+      width: 100%;
+      padding: $gap-medium;
+      border: $border-nano solid $light-grey;
+      border-radius: $radius-min;
+      font-size: 14px;
+      cursor: pointer;
+  
+      &:focus {
+        outline: none;
+        border-color: $se-life-green;
+      }
+    }
+  
+    &__calendar-button {
+      position: absolute;
+      right: $gap-medium;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      padding: $gap-nano;
+      cursor: pointer;
+      color: $se-dark-grey;
+  
+      &:hover {
+        color: $se-black;
+      }
+    }
+  
+    &__popup {
+      position: absolute;
+      top: calc(100% + #{$gap-medium});
+      left: 0;
+      width: 300px;
+      background: $white;
+      border-radius: $radius-min;
+      box-shadow: 0 4px 12px rgba($se-black, 0.1);
+      z-index: 1000;
+      padding: $gap-large;
+    }
+  
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $gap-large;
+    }
+  
+    &__selectors {
+      display: flex;
+      gap: $gap-medium;
+  }
+
+  &__select {
+    padding: $gap-nano $gap-medium;
+    border: $border-nano solid $light-grey;
+    border-radius: $radius-min;
+    background: $white;
+    cursor: pointer;
+    font-family: $font-stack;
+    min-width: 100px;
+
+    &:focus {
+      outline: none;
+      border-color: $se-life-green;
+    }
+
+    option {
+      font-size: 14px;
+      padding: $gap-medium;
+    }
+  }
+
+  &__nav-button {
+    padding: $gap-nano;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: $se-dark-grey;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-min;
+
+    &:hover {
+      background-color: $ultra-light-grey-2;
+      color: $se-black;
+    }
+  }
+
+  &__calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: $gap-nano;
+    margin-bottom: $gap-large;
+  }
+
+  &__weekday {
+    text-align: center;
+    font-size: 12px;
+    font-weight: $font-weight-secondary;
+    color: $se-dark-grey;
+    padding: $gap-nano 0;
+    user-select: none;
+  }
+
+  &__day {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    color: $se-black;
+    transition: all 0.2s ease;
+    
+    &:hover:not(:disabled) {
+      background-color: $se-life-green-10;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &--selected {
+      background-color: $se-life-green !important;
+      color: $white !important;
+    }
+
+    &--in-range {
+      background-color: $se-life-green-10;
+    }
+
+    &--other-month {
+      color: $medium-grey;
+    }
+
+    &--today {
+      font-weight: $font-weight-secondary;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 4px;
+        background-color: $se-life-green;
+      }
+    }
+  }
+
+  &__time {
+    border-top: $border-nano solid $super-light-grey;
+    padding-top: $gap-large;
+    margin-bottom: $gap-large;
+  }
+
+  &__time-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $gap-medium;
+
+    span {
+      color: $se-dark-grey;
+      font-size: 18px;
+      font-weight: $font-weight-primary;
+      user-select: none;
+    }
+  }
+
+  &__time-input {
+    width: 48px;
+    padding: $gap-nano;
+    text-align: center;
+    border: $border-nano solid $light-grey;
+    border-radius: $radius-min;
+    font-family: $font-stack;
+    font-size: 14px;
+
+    &::-webkit-inner-spin-button, 
+    &::-webkit-outer-spin-button {
+      opacity: 1;
+      height: 20px;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $se-life-green;
+    }
+  }
+
+  &__meridian-button {
+    padding: $gap-nano $gap-medium;
+    border: $border-nano solid $light-grey;
+    border-radius: $radius-min;
+    background: $white;
+    cursor: pointer;
+    font-family: $font-stack;
+    font-size: 14px;
+    min-width: 48px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $ultra-light-grey-2;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $se-life-green;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    border-top: $border-nano solid $super-light-grey;
+    padding-top: $gap-large;
+  }
+
+  &__apply-button {
+    padding: $gap-medium $gap-large;
+    background-color: $se-life-green;
+    color: $white;
+    border: none;
+    border-radius: $radius-min;
+    font-family: $font-stack;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    min-width: 100px;
+
+    &:hover {
+      background-color: $super-life-green;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba($se-life-green, 0.3);
+    }
+  }
+}
+
+// Animations
+.date-picker__popup {
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

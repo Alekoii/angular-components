@@ -1,0 +1,36 @@
+<div class="se-switch" 
+     [class.se-switch--small]="size === 'small'"
+     [class.se-switch--label-right]="labelPosition === 'right'">
+  
+  <div class="se-switch__label-container" *ngIf="label">
+    <label class="se-switch__label">
+      {{ label }}
+      <ng-container *ngIf="required">
+        <span class="se-switch__required">*</span>
+      </ng-container>
+      <ng-container *ngIf="infoIcon">
+        <div class="se-switch__info-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </div>
+      </ng-container>
+    </label>
+  </div>
+  
+  <button
+    type="button"
+    class="se-switch__toggle"
+    [class.se-switch__toggle--checked]="value"
+    [class.se-switch__toggle--disabled]="disabled"
+    (click)="toggleSwitch()"
+    [attr.aria-checked]="value"
+    [attr.aria-disabled]="disabled"
+    role="switch"
+  >
+    <span class="se-switch__track"></span>
+    <span class="se-switch__thumb"></span>
+  </button>
+</div>

@@ -1,0 +1,67 @@
+<div class="se-header-subtitle">
+    <div class="se-header-subtitle__container">
+      <!-- Info Section -->
+      <div class="se-header-subtitle__info-group">
+        <div class="se-header-subtitle__info-item" *ngIf="primaryInfo">
+          <span class="se-header-subtitle__label">{{primaryInfo.label}}</span>
+          <div class="se-header-subtitle__value">
+            {{primaryInfo.value}}
+            <span 
+              *ngIf="primaryInfo.countryCode" 
+              class="se-header-subtitle__country-flag"
+              [class]="primaryInfo.countryCode">
+            </span>
+          </div>
+        </div>
+  
+        <div class="se-header-subtitle__info-item" *ngIf="secondaryInfo">
+          <span class="se-header-subtitle__label">{{secondaryInfo.label}}</span>
+          <span class="se-header-subtitle__value">{{secondaryInfo.value}}</span>
+        </div>
+      </div>
+
+      <div class="se-header-subtitle__metadata">
+        <ng-container *ngFor="let item of metadata">
+          <span 
+            *ngIf="item.type === 'time-offer'" 
+            class="se-header-subtitle__time-offer">
+            {{item.value}}
+          </span>
+  
+          <div 
+            *ngIf="item.type === 'duration'" 
+            class="se-header-subtitle__duration">
+            <img 
+              *ngIf="item.icon"
+              [src]="item.icon"
+              class="se-icon se-icon--size-nano"
+              alt="">
+            {{item.value}}
+          </div>
+  
+          <!-- Price -->
+          <div 
+            *ngIf="item.type === 'price'" 
+            class="se-header-subtitle__price">
+            <span class="se-header-subtitle__price-currency">EUR</span>
+            <span class="se-header-subtitle__price-amount">{{item.value}}</span>
+          </div>
+        </ng-container>
+  
+        <!-- Actions -->
+        <div class="se-header-subtitle__actions">
+          <ng-container *ngFor="let action of actions">
+            <se-button
+              [label]="action.label"
+              [variant]="action.variant || 'filled'"
+              [type]="action.type || 'standard'"
+              [size]="action.size || 'medium'"
+              [iconPath]="action.iconPath"
+              [showLabel]="action.showLabel !== false"
+              (clicked)="handleActionClick(action)">
+            </se-button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,139 @@
+//Primary Colors - Green
+$se-logo-green : #009530;
+$ultra-life-green : #0A9A25;
+$super-life-green : #24B43F;
+$se-life-green : #3DCD58;
+$se-life-green-40 : #3dcd5740;
+$se-life-green-20 : #3DCD5820;
+$se-life-green-10 : #3DCD5810;
+$se-life-green-04 : #3DCD5804;
+
+//Primary Colors - Blue
+$ultra-sky-blue : #0F81B3; 
+$dark-sky-blue : #0087CD;
+$super-sky-blue : #299BCD;
+$se-sky-blue : #42B4E6;
+$se-sky-blue-20 : #42B4E620;
+$se-sky-blue-05 : #42B4E605;
+
+//Primary Colors - Others
+$se-fusia-red : #B10043;
+$red : #DC0A0A;
+$red-05 : #DC0A0A05;
+$honeysuckle-orange : #E47F00;
+$honeysuckle-orange-50 : #E47F0050;
+$honeysuckle-orange-30 : #E47F0030;
+$honeysuckle-orange-08 : #E47F0008;
+$sunflower-yellow : #FFD100;
+
+//Grey Scale
+$se-black : #0F0F0F;
+$anthracite-grey : #333333;
+$ultra-dark-grey : #2F3136;
+$se-grey-6 : #293133;
+$super-light-grey-6 : #434B4D;
+$super-dark-grey : #494B50;
+$super-dark-grey-2 : #505559;
+$ultra-light-grey-6 : #5C6466;
+$se-dark-grey : #626469;
+$medium-grey : #9FA0A4;
+$light-grey : #CBCBCB;
+$super-light-grey : #E6E6E6;
+$ultra-light-grey-2 : #F7F7F7;
+$ultra-light-grey-3 : #FAFAFA;
+$se-dark-grey-20 : #62646920;
+$white : #FFFFFF;
+
+//Validation
+$help : $dark-sky-blue;
+$info : $se-sky-blue;
+$non-critical-information : $se-sky-blue;
+$okay : $se-life-green;
+$success : $se-life-green;
+$run : $se-life-green;
+$normal-operation : $se-life-green;
+$warnings : $honeysuckle-orange;
+$alerts : $honeysuckle-orange;
+$error : $red;
+$alarm-fault : $red;
+$stop : $red;
+
+:root {
+    /* Base Colors */
+    /* Primary Colors - Green */
+    --se-logo-green: #009530;
+    --ultra-life-green: #0A9A25;
+    --super-life-green: #24B43F;
+    --se-life-green: #3DCD58;
+    --se-life-green-40: #3dcd5740;
+    --se-life-green-20: #3DCD5820;
+    --se-life-green-10: #3DCD5810;
+    --se-life-green-04: #3DCD5804;
+  
+    /* Primary Colors - Blue */
+    --ultra-sky-blue: #0F81B3;
+    --dark-sky-blue: #0087CD;
+    --super-sky-blue: #299BCD;
+    --se-sky-blue: #42B4E6;
+    --se-sky-blue-20: #42B4E620;
+    --se-sky-blue-05: #42B4E605;
+  
+    /* Primary Colors - Others */
+    --se-fusia-red: #B10043;
+    --red: #DC0A0A;
+    --red-05: #DC0A0A05;
+    --honeysuckle-orange: #E47F00;
+    --honeysuckle-orange-50: #E47F0050;
+    --honeysuckle-orange-30: #E47F0030;
+    --honeysuckle-orange-08: #E47F0008;
+    --sunflower-yellow: #FFD100;
+  
+    /* Grey Scale */
+    --se-black: #0F0F0F;
+    --anthracite-grey: #333333;
+    --ultra-dark-grey: #2F3136;
+    --se-grey-6: #293133;
+    --super-light-grey-6: #434B4D;
+    --super-dark-grey: #494B50;
+    --super-dark-grey-2: #505559;
+    --ultra-light-grey-6: #5C6466;
+    --se-dark-grey: #626469;
+    --medium-grey: #9FA0A4;
+    --light-grey: #CBCBCB;
+    --super-light-grey: #E6E6E6;
+    --ultra-light-grey-2: #F7F7F7;
+    --ultra-light-grey-3: #FAFAFA;
+    --se-dark-grey-20: #62646920;
+    --white: #FFFFFF;
+  
+    /* Semantic Color Variables */
+    /* Surface Colors */
+    --surface-primary: var(--white);
+    --surface-secondary: var(--ultra-light-grey-3);
+    --surface-tertiary: var(--super-light-grey);
+  
+    /* Text Colors */
+    --text-primary: var(--se-black);
+    --text-secondary: var(--ultra-dark-grey);
+    --text-tertiary: var(--super-light-grey-6);
+    --text-disabled: var(--ultra-light-grey-6);
+    --text-highlighted: var(var(--se-life-green);)
+
+    /* Additional Text Colors */
+    --text-darker: var(--anthracite-grey);
+    --text-medium-dark: var(--se-grey-6);
+    --text-medium-light: var(--super-dark-grey);
+    --text-light: var(--super-dark-grey-2);
+    --text-lighter: var(--se-dark-grey);
+    
+    /* Accent Colors */
+    --accent-primary: var(--se-logo-green);
+    --accent-secondary: var(--se-sky-blue);
+    --accent-tertiary: var(--honeysuckle-orange);
+    
+    /* State Colors */
+    --error: var(--red);
+    --warning: var(--sunflower-yellow);
+    --success: var(--se-life-green);
+    --info: var(--se-sky-blue);
+  }

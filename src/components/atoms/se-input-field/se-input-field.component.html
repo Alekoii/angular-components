@@ -1,0 +1,45 @@
+<div class="se-input-field" [ngClass]="{'se-input-field--stacked': type === 'stacked'}">
+  <label *ngIf="label" [for]="label" class="se-input-field__label">
+    {{ label }}
+    <span *ngIf="required" class="se-input-field__required">*</span>
+    <span *ngIf="infoIcon" class="se-input-field__info-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="16" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+      </svg>
+    </span>
+  </label>
+  <div class="se-input-field__input-wrapper">
+    <input *ngIf="size === 'single-line'"
+           [type]="getInputType()"
+           [id]="label"
+           [placeholder]="placeholder"
+           [required]="required"
+           [disabled]="disabled"
+           [ngClass]="{
+             'se-input-field__input': true,
+             'se-input-field__input--with-icon': icon,
+             'se-input-field__input--active': state === 'active',
+             'se-input-field__input--selected': state === 'selected',
+             'se-input-field__input--error': state === 'error'
+           }"
+           [(ngModel)]="value"
+           (input)="onInputChange($event)">
+    <textarea *ngIf="size === 'multi-line'"
+              [id]="label"
+              [placeholder]="placeholder"
+              [required]="required"
+              [disabled]="disabled"
+              [ngClass]="{
+                'se-input-field__input': true,
+                'se-input-field__input--with-icon': icon,
+                'se-input-field__input--active': state === 'active',
+                'se-input-field__input--selected': state === 'selected',
+                'se-input-field__input--error': state === 'error'
+              }"
+              [(ngModel)]="value"
+              (input)="onInputChange($event)"></textarea>
+    <img *ngIf="icon && iconPath" [src]="iconPath" class="se-input-field__icon" alt="Input icon">
+  </div>
+</div>

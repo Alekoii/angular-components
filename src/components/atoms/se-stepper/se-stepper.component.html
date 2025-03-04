@@ -1,0 +1,42 @@
+<div class="se-stepper">
+    <ng-container *ngFor="let step of steps; let i = index">
+      <div class="se-stepper__step">
+        <div 
+          class="se-stepper__node"
+          [class.se-stepper__node--disabled]="!isStepSelectable(i)"
+          (click)="selectStep(i)"
+        >
+          <div 
+            class="se-stepper__indicator"
+            [class.se-stepper__indicator--completed]="step.state === 'completed'"
+            [class.se-stepper__indicator--current]="step.state === 'current'"
+            [class.se-stepper__indicator--upcoming]="step.state === 'upcoming'"
+          >
+            <svg *ngIf="step.state === 'completed'"
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="2" 
+              stroke-linecap="round" 
+              stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <ng-container *ngIf="step.state !== 'completed'">{{i + 1}}</ng-container>
+          </div>
+          <span 
+            class="se-stepper__label"
+            [class.se-stepper__label--completed]="step.state === 'completed'"
+            [class.se-stepper__label--current]="step.state === 'current'"
+            [class.se-stepper__label--upcoming]="step.state === 'upcoming'"
+          >
+            {{step.label}}
+          </span>
+        </div>
+        <div 
+          class="se-stepper__connector"
+          [class.se-stepper__connector--completed]="step.state === 'completed'"
+        ></div>
+      </div>
+    </ng-container>
+  </div>

@@ -1,0 +1,10 @@
+.se-card {
+    display: flex;
+
+    .left {
+        .image-container {
+            width: 80px;
+            aspect-ratio: 1/1;
+        }
+    }
+}

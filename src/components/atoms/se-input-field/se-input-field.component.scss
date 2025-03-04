@@ -1,0 +1,96 @@
+@import '../../../styles/styles.scss';
+
+.se-input-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: $gap-nano;
+
+  &--stacked {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__label {
+    @extend %font-p-nano-bold;
+    color: $anthracite-grey;
+    display: flex;
+    align-items: center;
+    gap: $gap-nano;
+  }
+
+  &__required {
+    color: $red;
+  }
+
+  &__info-icon {
+    color: $anthracite-grey;
+    cursor: pointer;
+  }
+
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__input-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    padding: $gap-medium;
+    border: 1px solid $super-light-grey;
+    border-radius: $border-radius-micro;
+    @extend %font-p-small-regular;
+    color: $anthracite-grey;
+    background-color: $white;
+    transition: all 0.3s ease;
+
+    &--with-icon {
+      padding-right: 2.5rem;
+    }
+
+    &--active,
+    &:focus {
+      border-color: $se-life-green;
+      outline: none;
+    }
+
+    &--selected {
+      border-color: $se-sky-blue;
+    }
+
+    &--error {
+      border-color: $red;
+    }
+
+    &:disabled {
+      background-color: $super-light-grey;
+      cursor: not-allowed;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: $gap-medium;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    pointer-events: none;
+  }
+
+  &__error-text {
+    @extend %font-p-nano-regular;
+    color: $red;
+    margin-top: $gap-nano;
+  }
+}
+
+textarea.se-input-field__input {
+  min-height: 100px;
+  resize: vertical;
+}

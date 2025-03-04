@@ -1,0 +1,28 @@
+<div class="se-menu-dropdown" [class.se-menu-dropdown--disabled]="disabled">
+    <div 
+      class="se-menu-dropdown__trigger"
+      (click)="toggleMenu()"
+    >
+      <span class="se-menu-dropdown__label">{{ label }}</span>
+      <span class="se-menu-dropdown__arrow"></span>
+    </div>
+  
+    <div 
+      *ngIf="isOpen" 
+      class="se-menu-dropdown__content"
+      [class.se-menu-dropdown__content--right]="placement === 'bottom-right'"
+    >
+      <ul class="se-menu-dropdown__list">
+        <li 
+          *ngFor="let item of items"
+          class="se-menu-dropdown__item"
+          [class.se-menu-dropdown__item--disabled]="item.disabled"
+          [class.se-menu-dropdown__item--danger]="item.danger"
+          (click)="selectItem(item)"
+        >
+          <img *ngIf="item.icon" [src]="item.icon" class="se-menu-dropdown__item-icon" alt="" />
+          {{ item.label }}
+        </li>
+      </ul>
+    </div>
+  </div>

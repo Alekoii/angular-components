@@ -1,0 +1,32 @@
+<div class="se-radio-button"
+     [class.se-radio-button--vertical]="layout === 'vertical'"
+     [class.se-radio-button--horizontal]="layout === 'horizontal'">
+  <div *ngFor="let option of options"
+       class="se-radio-button__option"
+       [class.se-radio-button__option--disabled]="isOptionDisabled(option)"
+       [class.se-radio-button__option--selected]="getOptionState(option) === 'selected'"
+       [class.se-radio-button__option--active]="getOptionState(option) === 'active'">
+    <div class="se-radio-button__input-wrapper"
+         [class.se-radio-button__input-wrapper--checked]="getOptionState(option) === 'selected' || getOptionState(option) === 'active'"
+         (click)="selectOption(option)">
+      <span class="se-radio-button__checkmark"></span>
+    </div>
+    
+    <span class="se-radio-button__label" *ngIf="showLabel">
+      {{ option.label }}
+      <span class="se-radio-button__info-icon" *ngIf="showInfoIcon">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             viewBox="0 0 24 24" 
+             fill="none" 
+             stroke="currentColor" 
+             stroke-width="2" 
+             stroke-linecap="round" 
+             stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+      </span>
+    </span>
+  </div>
+</div>

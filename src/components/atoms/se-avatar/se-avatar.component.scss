@@ -1,0 +1,36 @@
+@import '../../../styles/styles.scss';
+
+.se-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: $super-light-grey;
+  color: $anthracite-grey;
+  font-weight: $font-weight-secondary;
+  cursor: pointer;
+
+  &--large {
+    width: 96px;
+    height: 96px;
+    @extend %font-h4-bold;
+  }
+
+  &--medium {
+    width: 40px;
+    height: 40px;
+    @extend %font-p-body-regular;
+  }
+
+  &--micro {
+    width: $size-medium;
+    height: $size-medium;
+    @extend %font-p-small-bold;
+  }
+
+  &--nano {
+    width: $size-small;
+    height: $size-small;
+    @extend %font-p-nano-bold;
+  }
+}

@@ -1,0 +1,14 @@
+@import 'gap';
+
+.main-center {
+    width: 1416px;
+    display: flex;
+    gap : $gap-xlarge;
+} 
+
+.main-stretch {
+    width: 100%;
+    display: flex;
+    gap : $gap-xlarge;
+    margin: $gap-xxxlarge;
+} 

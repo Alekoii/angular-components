@@ -1,0 +1,141 @@
+@import '../../../styles/styles.scss';
+
+.se-snackbar {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    min-width: 320px;
+    max-width: 560px;
+    padding: $gap-medium;
+    border-radius: $border-radius-micro;
+    box-shadow: 0 2px 8px rgba($se-black, 0.15);
+    z-index: 1000;
+
+    // Position variants
+    &--top-left {
+        top: $gap-large;
+        left: $gap-large;
+    }
+
+    &--top-center {
+        top: $gap-large;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &--top-right {
+        top: $gap-large;
+        right: $gap-large;
+    }
+
+    &--bottom-left {
+        bottom: $gap-large;
+        left: $gap-large;
+    }
+
+    &--bottom-center {
+        bottom: $gap-large;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &--bottom-right {
+        bottom: $gap-large;
+        right: $gap-large;
+    }
+
+    // Type variants
+    &--success {
+        background-color: $se-life-green-10;
+        border: $border-nano solid $se-life-green;
+        color: $se-life-green;
+
+        svg {
+            fill: none;
+            stroke: $se-life-green;
+        }
+    }
+
+    &--warning {
+        background-color: $honeysuckle-orange-08;
+        border: $border-nano solid $honeysuckle-orange;
+        color: $honeysuckle-orange;
+
+        svg {
+            fill: none;
+            stroke: $honeysuckle-orange;
+        }
+    }
+
+    &--info {
+        background-color: $se-sky-blue-05;
+        border: $border-nano solid $se-sky-blue;
+        color: $se-sky-blue;
+
+        svg {
+            fill: none;
+            stroke: $se-sky-blue;
+        }
+    }
+
+    &--error {
+        background-color: $red-05;
+        border: $border-nano solid $red;
+        color: $red;
+
+        svg {
+            fill: none;
+            stroke: $red;
+        }
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        gap: $gap-medium;
+        flex: 1;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        width: $size-small;
+        height: $size-small;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+
+    &__message {
+        @extend %font-p-small-regular;
+    }
+
+    &__close {
+        flex-shrink: 0;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        color: currentColor;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+        width: $size-small;
+        height: $size-small;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+@import '../../../styles/styles.scss';
+
+.se-icon {
+  display: flex;
+  transition: all 0.3s ease;
+  object-fit: contain;
+  justify-content: center;
+  align-items: center;
+
+  &--size {
+    &-nano {
+      width: $size-nano;
+      height: $size-nano;
+    }
+
+    &-micro {
+      width: $size-micro;
+      height: $size-micro;
+    }
+
+    &-small {
+      width: $size-small;
+      height: $size-small;
+    }
+
+    &-medium {
+      width: $size-medium;
+      height: $size-medium;
+    }
+
+    &-large {
+      width: $size-large;
+      height: $size-large;
+    }
+
+    &-xlarge {
+      width: $size-xlarge;
+      height: $size-xlarge;
+    }
+  }
+
+  &--disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}

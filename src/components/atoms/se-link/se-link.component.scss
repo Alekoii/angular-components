@@ -1,0 +1,54 @@
+@import '../../../styles/styles.scss';
+
+.se-link {
+  display: inline-flex;
+  gap: $gap-nano;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: $super-sky-blue;
+  cursor: pointer;
+  
+  &:hover {
+    color: $dark-sky-blue;
+    text-decoration: underline;
+  }
+  
+  &:active {
+    color: $ultra-sky-blue;
+  }
+
+  &--disabled {
+    color: rgba($super-sky-blue, 0.4);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // Size variations
+  &--size {
+    &-small {
+      @extend %font-p-small-regular;
+      
+      .se-link__icon {
+        width: $size-nano;
+        height: $size-nano;
+      }
+    }
+    
+    &-medium {
+      @extend %font-p-body-regular;
+      
+      .se-link__icon {
+        width: $size-micro;
+        height: $size-micro;
+      }
+    }
+  }
+
+  &__icon {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover &__icon {
+    transform: translateX(4px);
+  }
+}
