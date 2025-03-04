@@ -174,30 +174,30 @@
     }
   }
 </style>
+<se-card [heading]="cardData.heading" [subHeading]="cardData.subHeading" [price]="cardData.price"
+[image]="cardData.image" [primaryChipText]="cardData.primaryChipText"
+[secondaryChipText]="cardData.secondaryChipText" [quantity]="cardData.quantity"
+[priceInfoIcon]="cardData.priceInfoIcon" [showCountersInQuantity]="cardData.showCountersInQuantity"
+[showInfoIconForQuantity]="cardData.showInfoIconForQuantity"
+[showIncludedWithUPS]="cardData.showIncludedWithUPS" [showEdit]="cardData.showEdit"
+[showDelete]="cardData.showDelete" [showSustainabilityImage]="cardData.showSustainabilityImage"
+[actionButtonCount]="cardData.actionButtonCount" [actionButtons]="cardData.actionButtons"
+[isInStock]="cardData.isInStock" [isSelected]="cardData.isSelected" (onPrimaryAction)="handlePrimaryAction()"
+(onSecondaryAction)="handleSecondaryAction()" (onEdit)="handleEdit()" (onDelete)="handleDelete()"
+(onSelect)="handleSelect($event)" (onQuantityChange)="handleQuantityChange($event)"></se-card>
 
-<se-header
-  header="Dashboard"
-  [icon1]="'/assets/demo-icon.svg'"
-  [icon2]="'/assets/demo-icon.svg'"
-  [icon3]="'/assets/demo-icon.svg'"
-  [icon4]="'/assets/demo-icon.svg'"
-  [navigationItems]="navigationItems"
-  [isNotificationEnabled]="true"
-  [notificationBadgeNumber]="5"
-  searchPlaceholder="Search..."
-  logoSrc="assets/se-logo.svg"
-  logoAlt="Custom Logo"
-  avatarFirstName="Alok">
+<se-header header="Dashboard" [icon1]="'/assets/demo-icon.svg'" [icon2]="'/assets/demo-icon.svg'"
+  [icon3]="'/assets/demo-icon.svg'" [icon4]="'/assets/demo-icon.svg'" [navigationItems]="navigationItems"
+  [isNotificationEnabled]="true" [notificationBadgeNumber]="5" searchPlaceholder="Search..."
+  logoSrc="assets/se-logo.svg" logoAlt="Custom Logo" avatarFirstName="Alok">
 </se-header><se-avatar [firstName]="'Alok'"></se-avatar>
-<se-stepper 
-  [steps]="steps" 
-  [currentStep]="currentStepIndex"
-  (stepChange)="onStepChange($event)">
+<se-stepper [steps]="steps" [currentStep]="currentStepIndex" (stepChange)="onStepChange($event)">
 </se-stepper>
 
 <main class="main">
-
  
+
+  <se-chip label="Test Chip" variant="basic"></se-chip>
   <div class="content">
     <div class="left-side">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 982 239" fill="none" class="angular-logo">
@@ -228,12 +228,12 @@
       <h1>Hello, {{ title }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
       <se-checkbox [state]="'selected'"></se-checkbox>
-
+   
 
       <se-dropdown-selector [options]="options" [multiple]="true" [defaultValue]="['1', '2']" label="Select options"
         [required]="true" [infoIcon]="true"></se-dropdown-selector>
 
-        
+
 
     </div>
     <se-button label="Button"></se-button>

@@ -11,6 +11,7 @@ import { SeCardComponent } from "../components/organisms/se-card/se-card.compone
 import { SeTooltipComponent } from "../components/atoms/se-tooltip/se-tooltip.component";
 import { SeTooltipDirective } from '../directives/tooltip.directive';
 import { SeStepperComponent, StepperStep } from '../components/atoms/se-stepper/se-stepper.component';
+import { SeChipComponent } from '../components/atoms/se-chip/se-chip.component';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,8 @@ import { SeStepperComponent, StepperStep } from '../components/atoms/se-stepper/
     SeTooltipComponent,
     SeTooltipDirective,
     HeaderSubtitleComponent,
-    SeStepperComponent
+    SeStepperComponent,
+    SeChipComponent 
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -97,6 +99,31 @@ export class AppComponent {
     }
   ];
 
+  // Dummy data for the card component
+  cardData = {
+    heading: 'Smart Energy Controller',
+    subHeading: 'Advanced energy monitoring and management device',
+    price: 199.99,
+    image: 'assets/placeholder.svg',
+    primaryChipText: 'New',
+    secondaryChipText: 'Energy Efficient',
+    quantity: 1,
+    priceInfoIcon: true,
+    showCountersInQuantity: true,
+    showInfoIconForQuantity: true,
+    showIncludedWithUPS: true,
+    showEdit: true,
+    showDelete: true,
+    showSustainabilityImage: true,
+    actionButtonCount: 3,
+    actionButtons: [
+      { label: 'Add to Cart', type: 'primary', variant: 'filled', size: 'small' },
+      { label: 'Save for Later', type: 'standard', variant: 'outline', size: 'small' }
+    ],
+    isInStock: true,
+    isSelected: false
+  };
+
   onStepChange(stepIndex: number): void {
     this.currentStepIndex = stepIndex;
     this.steps = this.steps.map((step, index) => ({
@@ -104,5 +131,32 @@ export class AppComponent {
       state: index < stepIndex ? 'completed' :
         index === stepIndex ? 'current' : 'upcoming'
     }));
+  }
+
+  // Event handlers for the card component
+  handlePrimaryAction(): void {
+    console.log('Primary action clicked');
+  }
+
+  handleSecondaryAction(): void {
+    console.log('Secondary action clicked');
+  }
+
+  handleEdit(): void {
+    console.log('Edit clicked');
+  }
+
+  handleDelete(): void {
+    console.log('Delete clicked');
+  }
+
+  handleSelect(selected: boolean): void {
+    console.log('Selected:', selected);
+    this.cardData.isSelected = selected;
+  }
+
+  handleQuantityChange(quantity: number): void {
+    console.log('Quantity changed:', quantity);
+    this.cardData.quantity = quantity;
   }
 }
