@@ -1,10 +1,265 @@
+@import '../../../styles/styles.scss';
+
 .se-card {
     display: flex;
+    width: 100%;
+    padding: $gap-large;
+    background-color: $white;
+    border: $border-nano solid $super-light-grey;
+    border-radius: $border-radius-micro;
+    gap: $gap-xlarge;
 
-    .left {
-        .image-container {
-            width: 80px;
-            aspect-ratio: 1/1;
+    &__left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $gap-medium;
+        width: 100px;
+    }
+
+    &__image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $gap-nano;
+    }
+
+    &__image-wrapper {
+        width: 80px;
+        height: 80px;
+        border: $border-nano solid $super-light-grey;
+        border-radius: $border-radius-micro;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    &__image-placeholder {
+        width: 100%;
+        height: 100%;
+        background-color: $ultra-light-grey-2;
+    }
+
+    &__in-stock {
+        @extend %font-p-nano-bold;
+        color: $se-life-green;
+    }
+
+    &__middle {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: $gap-medium;
+    }
+
+    &__heading {
+        @extend %font-h5-bold;
+        color: $anthracite-grey;
+        margin: 0;
+    }
+
+    &__subheading {
+        @extend %font-p-small-regular;
+        color: $se-dark-grey;
+        margin: 0;
+    }
+
+    &__info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $gap-medium;
+    }
+
+    &__sustainability {
+        display: flex;
+        align-items: center;
+        gap: $gap-medium;
+        margin-top: $gap-medium;
+    }
+
+    &__sustainability-text {
+        @extend %font-p-small-regular;
+        color: $se-life-green;
+    }
+
+    &__sustainability-icon {
+        width: $size-nano;
+        height: $size-nano;
+    }
+
+    &__details {
+        margin-top: $gap-medium;
+        display: flex;
+        align-items: center;
+        gap: $gap-medium;
+        cursor: pointer;
+    }
+
+    &__details-text {
+        @extend %font-p-small-bold;
+        color: $super-sky-blue;
+    }
+
+    &__details-arrow {
+        width: 12px;
+        height: 12px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23299BCD' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    &__right {
+        width: 280px;
+        display: flex;
+        flex-direction: column;
+        gap: $gap-large;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    &__quantity-container,
+    &__price-container {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-nano;
+    }
+
+    &__quantity-label,
+    &__price-label {
+        @extend %font-p-nano-regular;
+        color: $se-dark-grey;
+        display: flex;
+        align-items: center;
+        gap: $gap-nano;
+    }
+
+    &__info-icon {
+        width: 14px;
+        height: 14px;
+        color: $medium-grey;
+    }
+
+    &__quantity-value {
+        display: flex;
+        align-items: center;
+        gap: $gap-medium;
+        @extend %font-p-body-regular;
+        color: $anthracite-grey;
+    }
+
+    &__quantity-btn {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: $border-nano solid $super-light-grey;
+        background-color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-weight: $font-weight-secondary;
+
+        &:hover {
+            border-color: $se-life-green;
+            color: $se-life-green;
         }
+
+        &--minus {
+            color: $medium-grey;
+        }
+
+        &--plus {
+            color: $anthracite-grey;
+        }
+    }
+
+    &__price-value {
+        display: flex;
+        align-items: center;
+        gap: $gap-nano;
+    }
+
+    &__price-currency {
+        @extend %font-p-nano-regular;
+        color: $medium-grey;
+    }
+
+    &__price-amount {
+        @extend %font-h5-bold;
+        color: $se-life-green;
+    }
+
+    &__actions {
+        display: flex;
+        gap: $gap-medium;
+    }
+
+    &__action-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: $border-radius-micro;
+        border: $border-nano solid $super-light-grey;
+        background-color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        svg {
+            width: 16px;
+            height: 16px;
+            color: $medium-grey;
+        }
+
+        &:hover {
+            border-color: $medium-grey;
+
+            svg {
+                color: $se-dark-grey;
+            }
+        }
+
+        &--delete:hover {
+            border-color: $red;
+
+            svg {
+                color: $red;
+            }
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        gap: $gap-medium;
+        flex-wrap: wrap;
+    }
+
+    &__ups-info {
+        display: flex;
+        align-items: center;
+        gap: $gap-medium;
+        margin-top: $gap-medium;
+    }
+
+    &__ups-icon {
+        width: $size-nano;
+        height: $size-nano;
+        color: $medium-grey;
+    }
+
+    &__ups-text {
+        @extend %font-p-small-regular;
+        color: $medium-grey;
     }
 }

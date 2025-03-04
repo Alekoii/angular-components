@@ -1,42 +1,130 @@
 <div class="se-card">
-    <div class="left">
-        <se-checkbox></se-checkbox>
-        <div class="image">
-            <div class="image-container">
-                <img src={{image}} />
+    <div class="se-card__left">
+        <se-checkbox *ngIf="checkBox" [state]="isSelected ? 'selected' : null"
+            (stateChange)="onCheckboxChange($event)"></se-checkbox>
+        <div class="se-card__image-container">
+            <div class="se-card__image-wrapper">
+                <img *ngIf="image" [src]="image" alt="Product image" class="se-card__image">
+                <div *ngIf="!image" class="se-card__image-placeholder"></div>
             </div>
-            <p>In Stock</p>
+            <span *ngIf="isInStock" class="se-card__in-stock">In Stock</span>
         </div>
     </div>
-    <div class="middle">
-        <h2>{{heading}}</h2>
-        <div class="information">
-            <se-chip></se-chip>
-            <se-chip></se-chip>
+
+    <div class="se-card__middle">
+        <h3 class="se-card__heading">{{ heading }}</h3>
+        <p *ngIf="subHeading" class="se-card__subheading">{{ subHeading }}</p>
+
+        <div class="se-card__info">
+            <se-chip *ngIf="primaryChipText" [label]="primaryChipText" variant="basic"></se-chip>
+            <se-chip *ngIf="secondaryChipText" [label]="secondaryChipText" variant="basic"></se-chip>
         </div>
-        <div class="sustainability">
-            <p>Sustainable by design</p>
-            <img />
+
+        <div *ngIf="showSustainabilityImage" class="se-card__sustainability">
+            <span class="se-card__sustainability-text">Sustainable by design</span>
+            <img src="assets/sustainability-icon.svg" alt="Sustainability" class="se-card__sustainability-icon">
         </div>
-        <div class="details">
-            <p>Details</p>
-            <div>More Details</div>
+
+        <div class="se-card__details">
+            <span class="se-card__details-text">Details</span>
+            <span class="se-card__details-arrow"></span>
         </div>
     </div>
-    <div  class="right">
-        <div class="top">
-            <div class="quantity">{{quantity}}</div>
-            <div class="price">{{price}}</div>
-            <div class="actions">
-                <div class="edit"></div>
-                <div class="delete"></div>
+
+    <div class="se-card__right">
+        <div class="se-card__top">
+            <div class="se-card__quantity-container">
+                <div class="se-card__quantity-label">
+                    Quantity
+                    <svg *ngIf="showInfoIconForQuantity" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="se-card__info-icon">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                </div>
+
+                <div class="se-card__quantity-value">
+                    <button *ngIf="showCountersInQuantity" class="se-card__quantity-btn se-card__quantity-btn--minus"
+                        (click)="decreaseQuantity()">-</button>
+                    <span>{{ quantity || 1 }}</span>
+                    <button *ngIf="showCountersInQuantity" class="se-card__quantity-btn se-card__quantity-btn--plus"
+                        (click)="increaseQuantity()">+</button>
+                </div>
+            </div>
+
+            <div class="se-card__price-container">
+                <div class="se-card__price-label">
+                    Price
+                    <svg *ngIf="priceInfoIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="se-card__info-icon">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                </div>
+
+                <div class="se-card__price-value">
+                    <span class="se-card__price-currency">EUR</span>
+                    <span class="se-card__price-amount">{{ price.toFixed(2) }}</span>
+                </div>
+            </div>
+
+            <div class="se-card__actions">
+                <button *ngIf="showEdit" class="se-card__action-btn se-card__action-btn--edit" (click)="handleEdit()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                </button>
+
+                <button *ngIf="showDelete" class="se-card__action-btn se-card__action-btn--delete"
+                    (click)="handleDelete()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                    </svg>
+                </button>
             </div>
         </div>
-        <div class="bottom">
-            <se-button></se-button>
-            <se-button></se-button>
-            <se-button></se-button>
-            <se-button></se-button>
+
+        <div class="se-card__bottom">
+            <se-button *ngIf="actionButtonCount >= 1" [label]="actionButtons[0]?.label || 'Action 1'"
+                [type]="actionButtons[0]?.type || 'primary'" [variant]="actionButtons[0]?.variant || 'filled'"
+                [size]="actionButtons[0]?.size || 'small'" (clicked)="onActionButton(1)">
+            </se-button>
+
+            <se-button *ngIf="actionButtonCount >= 2" [label]="actionButtons[1]?.label || 'Action 2'"
+                [type]="actionButtons[1]?.type || 'standard'" [variant]="actionButtons[1]?.variant || 'outline'"
+                [size]="actionButtons[1]?.size || 'small'" (clicked)="onActionButton(2)">
+            </se-button>
+
+            <se-button *ngIf="actionButtonCount >= 3" [label]="actionButtons[2]?.label || 'Action 3'"
+                [type]="actionButtons[2]?.type || 'standard'" [variant]="actionButtons[2]?.variant || 'outline'"
+                [size]="actionButtons[2]?.size || 'small'" (clicked)="onActionButton(3)">
+            </se-button>
+
+            <se-button *ngIf="actionButtonCount >= 4" [label]="actionButtons[3]?.label || 'Action 4'"
+                [type]="actionButtons[3]?.type || 'standard'" [variant]="actionButtons[3]?.variant || 'outline'"
+                [size]="actionButtons[3]?.size || 'small'" (clicked)="onActionButton(4)">
+            </se-button>
+        </div>
+
+        <div *ngIf="showIncludedWithUPS" class="se-card__ups-info">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="se-card__ups-icon">
+                <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                <path
+                    d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
+                </path>
+            </svg>
+            <span class="se-card__ups-text">Included with UPS</span>
         </div>
     </div>
 </div>
