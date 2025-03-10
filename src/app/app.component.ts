@@ -55,7 +55,7 @@ interface ActionButton {
 export class AppComponent {
   title = 'packagedemo';
   isSelected = true;
-    isDisabled = true;
+    isDisabled = false;
     wasClicked = false;
     
     toggleSelected(): void {
