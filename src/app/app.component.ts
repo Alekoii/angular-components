@@ -13,6 +13,18 @@ import { SeTooltipDirective } from '../directives/tooltip.directive';
 import { SeStepperComponent, StepperStep } from '../components/atoms/se-stepper/se-stepper.component';
 import { SeChipComponent } from '../components/atoms/se-chip/se-chip.component';
 
+// These types should match those defined in the SeCardComponent
+type ButtonVariant = 'outline' | 'filled';
+type ButtonType = 'standard' | 'primary' | 'secondary' | 'danger' | 'warning';
+type ButtonSize = 'small' | 'medium' | 'large';
+
+interface ActionButton {
+  label: string;
+  variant?: ButtonVariant;
+  type?: ButtonType;
+  size?: ButtonSize;
+}
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -99,7 +111,7 @@ export class AppComponent {
     }
   ];
 
-  // Dummy data for the card component
+  // Dummy data for the card component with properly typed actionButtons
   cardData = {
     heading: 'Smart Energy Controller',
     subHeading: 'Advanced energy monitoring and management device',
@@ -115,11 +127,11 @@ export class AppComponent {
     showEdit: true,
     showDelete: true,
     showSustainabilityImage: true,
-    actionButtonCount: 3,
+    actionButtonCount: 3 as const,
     actionButtons: [
-      { label: 'Add to Cart', type: 'primary', variant: 'filled', size: 'small' },
-      { label: 'Save for Later', type: 'standard', variant: 'outline', size: 'small' }
-    ],
+      { label: 'Add to Cart', type: 'primary' as ButtonType, variant: 'filled' as ButtonVariant, size: 'small' as ButtonSize },
+      { label: 'Save for Later', type: 'standard' as ButtonType, variant: 'outline' as ButtonVariant, size: 'small' as ButtonSize }
+    ] as ActionButton[],
     isInStock: true,
     isSelected: false
   };

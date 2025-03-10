@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SeButtonComponent } from '../../atoms/se-button/se-button.component';
 import { SeChipComponent } from '../../atoms/se-chip/se-chip.component';
@@ -53,6 +53,27 @@ export class SeCardComponent {
   @Output() onButton2Action = new EventEmitter<void>();
   @Output() onButton3Action = new EventEmitter<void>();
   @Output() onButton4Action = new EventEmitter<void>();
+
+  imgError = false;
+
+  // Handle screen size change
+  isMobile = false;
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkScreenSize();
+  }
+
+  ngOnInit() {
+    this.checkScreenSize();
+  }
+
+  private checkScreenSize() {
+    this.isMobile = window.innerWidth < 768;
+  }
+
+  handleImageError() {
+    this.imgError = true;
+  }
 
   onCheckboxChange(state: 'selected' | 'intermediate' | 'active' | null) {
     this.isSelected = state === 'selected';
