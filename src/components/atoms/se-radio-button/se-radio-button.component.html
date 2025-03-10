@@ -1,14 +1,11 @@
-<div class="se-radio-button"
-     [class.se-radio-button--vertical]="layout === 'vertical'"
-     [class.se-radio-button--horizontal]="layout === 'horizontal'">
-  <div *ngFor="let option of options"
+<div *ngFor="let option of options"
        class="se-radio-button__option"
        [class.se-radio-button__option--disabled]="isOptionDisabled(option)"
        [class.se-radio-button__option--selected]="getOptionState(option) === 'selected'"
-       [class.se-radio-button__option--active]="getOptionState(option) === 'active'">
+       [class.se-radio-button__option--active]="getOptionState(option) === 'active'"
+       (click)="selectOption(option)">
     <div class="se-radio-button__input-wrapper"
-         [class.se-radio-button__input-wrapper--checked]="getOptionState(option) === 'selected' || getOptionState(option) === 'active'"
-         (click)="selectOption(option)">
+         [class.se-radio-button__input-wrapper--checked]="getOptionState(option) === 'selected' || getOptionState(option) === 'active'">
       <span class="se-radio-button__checkmark"></span>
     </div>
     
@@ -29,4 +26,3 @@
       </span>
     </span>
   </div>
-</div>

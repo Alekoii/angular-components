@@ -8,6 +8,7 @@
     border: $border-nano solid $super-light-grey;
     border-radius: $border-radius-micro;
     transition: all 0.3s ease;
+    gap: $gap-large;
 
     &:hover {
         box-shadow: 0 4px 8px rgba($se-black, 0.08);
@@ -20,10 +21,8 @@
 
     &__left {
         display: flex;
-        flex-direction: column;
         align-items: flex-start;
         gap: $gap-medium;
-        width: 100px;
 
         .se-card--mobile & {
             width: 100%;
@@ -83,7 +82,7 @@
         display: flex;
         flex-direction: column;
         gap: $gap-medium;
-        min-width: 0; // For text truncation
+        min-width: 0; 
     }
 
     &__heading {
@@ -181,6 +180,7 @@
         flex-direction: column;
         gap: $gap-large;
         justify-content: space-between;
+        max-width: 500px;
 
         .se-card--mobile & {
             width: 100%;
@@ -189,8 +189,9 @@
 
     &__top {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
+        justify-content: end;
+        align-items: end;
+        gap: $gap-xlarge;
 
         .se-card--mobile & {
             flex-wrap: wrap;
@@ -345,8 +346,8 @@
         flex-wrap: nowrap;
         gap: $gap-medium;
         overflow-x: auto;
+        justify-content: end;
         
-        // Ensure buttons in a row on mobile
         .se-card--mobile & {
             flex-direction: row;
             width: 100%;
@@ -360,7 +361,8 @@
 
     &__ups-info {
         display: flex;
-        align-items: center;
+        align-items: end;
+        justify-content: end;
         gap: $gap-medium;
         margin-top: $gap-medium;
     }
@@ -392,10 +394,15 @@
             flex-direction: row;
             width: 100%;
             
-            // Ensure buttons don't grow to fill space
             se-button {
                 flex: 0 0 auto;
             }
         }
+
+        &__top, &__ups-info, &__bottom, &__left {
+            justify-content: start !important;
+            align-items: start !important;
+        }
+
     }
 }
