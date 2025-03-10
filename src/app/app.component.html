@@ -194,6 +194,9 @@
 <se-stepper [steps]="steps" [currentStep]="currentStepIndex" (stepChange)="onStepChange($event)">
 </se-stepper>
 
+
+
+
 <main class="main">
   
  
@@ -281,6 +284,12 @@
       </div>
     </div>
   </div>
+  <se-selector-chip 
+label="Technology" 
+[selected]="isSelected" 
+[disabled]="isDisabled"
+(select)="onChipSelect()">
+</se-selector-chip>
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

@@ -13,6 +13,7 @@ import { SeTooltipDirective } from '../directives/tooltip.directive';
 import { SeStepperComponent, StepperStep } from '../components/atoms/se-stepper/se-stepper.component';
 import { SeChipComponent } from '../components/atoms/se-chip/se-chip.component';
 import { SePaginationComponent } from '../components/atoms/se-pagination/se-pagination.component';
+import { SeSelectorChipComponent } from "../components/atoms/se-selector-chip/se-selector-chip.component";
 
 // These types should match those defined in the SeCardComponent
 type ButtonVariant = 'outline' | 'filled';
@@ -24,6 +25,7 @@ interface ActionButton {
   variant?: ButtonVariant;
   type?: ButtonType;
   size?: ButtonSize;
+  
 }
 
 @Component({
@@ -43,14 +45,34 @@ interface ActionButton {
     SeTooltipDirective,
     HeaderSubtitleComponent,
     SeStepperComponent,
-    SeChipComponent , 
-    SePaginationComponent
-  ],
+    SeChipComponent,
+    SePaginationComponent,
+    SeSelectorChipComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'packagedemo';
+  isSelected = true;
+    isDisabled = true;
+    wasClicked = false;
+    
+    toggleSelected(): void {
+      this.isSelected = !this.isSelected;
+    }
+    
+    toggleDisabled(): void {
+      this.isDisabled = !this.isDisabled;
+    }
+    
+    onChipSelect(): void {
+      this.wasClicked = true;
+      // Reset the notification after 2 seconds
+      setTimeout(() => {
+        this.wasClicked = false;
+      }, 2000);
+    }
 
   steps: StepperStep[] = [
     { label: 'Step 1', state: 'completed' },
@@ -112,7 +134,6 @@ export class AppComponent {
       onClick: () => console.log('Profile clicked')
     }
   ];
-
   // Dummy data for the card component with properly typed actionButtons
   cardData = {
     heading: 'Smart Energy Controller',
