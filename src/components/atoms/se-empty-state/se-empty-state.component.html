@@ -1,0 +1,32 @@
+<div class="se-empty-state" [class.se-empty-state--centered]="centered">
+    <div class="se-empty-state__content">
+      <div class="se-empty-state__icon-container" *ngIf="iconSrc">
+        <img [src]="iconSrc" alt="" class="se-empty-state__icon">
+      </div>
+      
+      <div class="se-empty-state__text-container">
+        <h3 class="se-empty-state__title">{{ title }}</h3>
+        
+        <p *ngIf="subtitle" class="se-empty-state__subtitle">{{ subtitle }}</p>
+        
+        <p class="se-empty-state__body">
+          {{ bodyText }}
+          <a *ngIf="hasLink" 
+             [href]="linkUrl" 
+             class="se-empty-state__link"
+             (click)="onLinkClick()">
+            {{ linkText }}
+          </a>
+        </p>
+      </div>
+      
+      <div *ngIf="hasAction" class="se-empty-state__action">
+        <se-button 
+          [label]="actionButtonText || ''" 
+          [type]="actionButtonType"
+          [variant]="actionButtonVariant"
+          (clicked)="onActionClick()">
+        </se-button>
+      </div>
+    </div>
+  </div>

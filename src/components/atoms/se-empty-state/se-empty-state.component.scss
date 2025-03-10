@@ -1,0 +1,74 @@
+@import '../../../styles/styles.scss';
+
+.se-empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: $gap-large;
+  
+  &--centered {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $gap-medium;
+    max-width: 480px;
+  }
+  
+  &__icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: $gap-medium;
+  }
+  
+  &__icon {
+    width: $size-large;
+    height: $size-large;
+    object-fit: contain;
+  }
+  
+  &__text-container {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-nano;
+    width: 100%;
+  }
+  
+  &__title {
+    @extend %font-h4-regular;
+    color: $anthracite-grey;
+    margin: 0;
+  }
+  
+  &__subtitle {
+    @extend %font-p-small-regular;
+    color: $se-dark-grey;
+    margin: 0 0 $gap-nano 0;
+  }
+  
+  &__body {
+    @extend %font-p-small-regular;
+    color: $se-dark-grey;
+    margin: 0;
+  }
+  
+  &__link {
+    color: $super-sky-blue;
+    text-decoration: none;
+    margin-left: $gap-nano;
+    
+    &:hover {
+      text-decoration: underline;
+      color: $dark-sky-blue;
+    }
+  }
+  
+  &__action {
+    margin-top: $gap-medium;
+  }
+}
