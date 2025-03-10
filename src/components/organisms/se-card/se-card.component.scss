@@ -7,7 +7,6 @@
     background-color: $white;
     border: $border-nano solid $super-light-grey;
     border-radius: $border-radius-micro;
-    gap: $gap-xlarge;
     transition: all 0.3s ease;
 
     &:hover {
@@ -130,17 +129,26 @@
         background-position: center;
     }
 
-    &__details {
+    &__details-section {
         margin-top: $gap-medium;
+    }
+
+    &__details {
         display: flex;
         align-items: center;
         gap: $gap-medium;
         cursor: pointer;
+        user-select: none;
+        
+        &:hover .se-card__details-text {
+            color: $dark-sky-blue;
+        }
     }
 
     &__details-text {
         @extend %font-p-small-bold;
         color: $super-sky-blue;
+        transition: color 0.2s ease;
     }
 
     &__details-arrow {
@@ -149,13 +157,30 @@
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23299BCD' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
         background-size: contain;
         background-repeat: no-repeat;
+        transition: transform 0.3s ease;
+        transform: rotate(90deg);
+        
+        &--expanded {
+            transform: rotate(-90deg);
+        }
+    }
+
+    &__details-content {
+        margin-top: $gap-medium;
+        padding: $gap-medium;
+        
+        p {
+            @extend %font-p-small-regular;
+            color: $anthracite-grey;
+            margin: 0;
+        }
     }
 
     &__right {
-        width: 280px;
         display: flex;
         flex-direction: column;
         gap: $gap-large;
+        justify-content: space-between;
 
         .se-card--mobile & {
             width: 100%;
@@ -219,7 +244,7 @@
     &__quantity-btn {
         width: 24px;
         height: 24px;
-        border-radius: 50%;
+        border-radius: 2px;
         border: $border-nano solid $super-light-grey;
         background-color: $white;
         display: flex;
@@ -317,8 +342,20 @@
 
     &__bottom {
         display: flex;
+        flex-wrap: nowrap;
         gap: $gap-medium;
-        flex-wrap: wrap;
+        overflow-x: auto;
+        
+        // Ensure buttons in a row on mobile
+        .se-card--mobile & {
+            flex-direction: row;
+            width: 100%;
+            overflow-x: auto;
+            
+            se-button {
+                flex: 0 0 auto;
+            }
+        }
     }
 
     &__ups-info {
@@ -352,11 +389,12 @@
         }
         
         &__bottom {
-            flex-direction: column;
+            flex-direction: row;
             width: 100%;
             
+            // Ensure buttons don't grow to fill space
             se-button {
-                width: 100%;
+                flex: 0 0 auto;
             }
         }
     }

@@ -25,9 +25,16 @@
             <img src="assets/sustainable.jpg" alt="Sustainability icon" class="se-card__sustainability-icon">
         </div>
 
-        <div class="se-card__details">
-            <span class="se-card__details-text">Details</span>
-            <span class="se-card__details-arrow"></span>
+        <div class="se-card__details-section">
+            <div class="se-card__details" (click)="toggleDetails()" tabindex="0" role="button" 
+                 [attr.aria-expanded]="isDetailsExpanded">
+                <span class="se-card__details-text">{{ isDetailsExpanded ? 'Less Details' : 'More Details' }}</span>
+                <span class="se-card__details-arrow" [class.se-card__details-arrow--expanded]="isDetailsExpanded"></span>
+            </div>
+            
+            <div *ngIf="isDetailsExpanded" class="se-card__details-content" [@expandCollapse]>
+                <p>{{ detailsContent }}</p>
+            </div>
         </div>
     </div>
 

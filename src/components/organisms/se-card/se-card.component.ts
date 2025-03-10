@@ -42,6 +42,7 @@ export class SeCardComponent {
   @Input() actionButtons: ActionButton[] = [];
   @Input() isInStock = true;
   @Input() isSelected = false;
+  @Input() detailsContent: string = 'This is the expanded details section with additional information about the product. It can include specifications, features, and other important details that the user might want to know.';
 
   @Output() onPrimaryAction = new EventEmitter<void>();
   @Output() onSecondaryAction = new EventEmitter<void>();
@@ -55,6 +56,7 @@ export class SeCardComponent {
   @Output() onButton4Action = new EventEmitter<void>();
 
   imgError = false;
+  isDetailsExpanded = false;
 
   // Handle screen size change
   isMobile = false;
@@ -98,6 +100,10 @@ export class SeCardComponent {
 
   handleDelete(): void {
     this.onDelete.emit();
+  }
+
+  toggleDetails(): void {
+    this.isDetailsExpanded = !this.isDetailsExpanded;
   }
 
   onActionButton(buttonIndex: number) {
