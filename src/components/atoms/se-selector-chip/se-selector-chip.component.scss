@@ -1,0 +1,54 @@
+@import '../../../styles/styles.scss';
+
+.se-selector-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: $gap-nano $gap-medium;
+  border-radius: 16px;
+  background-color: $super-light-grey;
+  color: $anthracite-grey;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover:not(&--disabled) {
+    background-color: $light-grey;
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $se-sky-blue;
+  }
+  
+  &--size {
+    &-small {
+      height: 32px;
+      @extend %font-p-small-regular;
+    }
+    
+    &-nano {
+      height: 24px;
+      @extend %font-p-nano-regular;
+    }
+  }
+  
+  &--selected {
+    background-color: $se-life-green;
+    color: $white;
+    
+    &:hover {
+      background-color: $super-life-green;
+    }
+  }
+  
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  &__label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
