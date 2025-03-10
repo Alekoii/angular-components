@@ -12,6 +12,7 @@ import { SeTooltipComponent } from "../components/atoms/se-tooltip/se-tooltip.co
 import { SeTooltipDirective } from '../directives/tooltip.directive';
 import { SeStepperComponent, StepperStep } from '../components/atoms/se-stepper/se-stepper.component';
 import { SeChipComponent } from '../components/atoms/se-chip/se-chip.component';
+import { SePaginationComponent } from '../components/atoms/se-pagination/se-pagination.component';
 
 // These types should match those defined in the SeCardComponent
 type ButtonVariant = 'outline' | 'filled';
@@ -42,7 +43,8 @@ interface ActionButton {
     SeTooltipDirective,
     HeaderSubtitleComponent,
     SeStepperComponent,
-    SeChipComponent 
+    SeChipComponent , 
+    SePaginationComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
