@@ -1,0 +1,188 @@
+@import '../../../styles/styles.scss';
+
+.se-pagination {
+  display: flex;
+  align-items: center;
+  gap: $gap-medium;
+  
+  &--center {
+    justify-content: center;
+  }
+  
+  &__nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: $size-micro;
+    height: $size-micro;
+    border: $border-nano solid $super-light-grey;
+    border-radius: $border-radius-micro;
+    background-color: $white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover:not(:disabled) {
+      border-color: $se-life-green;
+    }
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+  
+  &__nav-icon {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    
+    &--first {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23626469' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='11 17 6 12 11 7'%3E%3C/polyline%3E%3Cpath d='M18 17V7'%3E%3C/path%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    &--prev {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23626469' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    &--next {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23626469' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    &--last {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23626469' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='13 17 18 12 13 7'%3E%3C/polyline%3E%3Cpath d='M6 17V7'%3E%3C/path%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    
+    &--go {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23626469' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+  
+  &__page-indicator {
+    display: flex;
+    align-items: center;
+    gap: $gap-nano;
+    @extend %font-p-small-regular;
+    color: $anthracite-grey;
+  }
+  
+  &__select-wrapper {
+    position: relative;
+  }
+  
+  &__select {
+    min-width: 50px;
+    height: 28px;
+    padding: 0 $gap-medium;
+    padding-right: 24px;
+    @extend %font-p-small-regular;
+    border: $border-nano solid $super-light-grey;
+    border-radius: $border-radius-micro;
+    background-color: $white;
+    appearance: none;
+    cursor: pointer;
+    
+    &:focus {
+      outline: none;
+      border-color: $se-life-green;
+    }
+  }
+  
+  &__select-arrow {
+    position: absolute;
+    top: 50%;
+    right: $gap-medium;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $anthracite-grey;
+  }
+  
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: $gap-nano;
+  }
+  
+  &__page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 $gap-nano;
+    border: $border-nano solid $super-light-grey;
+    border-radius: $border-radius-micro;
+    background-color: $white;
+    @extend %font-p-small-regular;
+    color: $anthracite-grey;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover:not(&--active) {
+      border-color: $se-life-green;
+    }
+    
+    &--active {
+      background-color: $se-life-green;
+      border-color: $se-life-green;
+      color: $white;
+    }
+  }
+  
+  &__go-to-page {
+    display: flex;
+    align-items: center;
+    gap: $gap-nano;
+    @extend %font-p-small-regular;
+    color: $anthracite-grey;
+  }
+  
+  &__go-to-input {
+    width: 50px;
+    height: 28px;
+    padding: 0 $gap-nano;
+    border: $border-nano solid $super-light-grey;
+    border-radius: $border-radius-micro;
+    @extend %font-p-small-regular;
+    
+    &:focus {
+      outline: none;
+      border-color: $se-life-green;
+    }
+  }
+  
+  &__go-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: $border-nano solid $super-light-grey;
+    border-radius: $border-radius-micro;
+    background-color: $white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      border-color: $se-life-green;
+    }
+  }
+}

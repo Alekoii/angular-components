@@ -1,0 +1,91 @@
+<div class="se-pagination" [class.se-pagination--center]="align === 'center'">
+    <!-- First page and Previous page buttons -->
+    <button 
+      *ngIf="showEdgeNavigation" 
+      class="se-pagination__nav-btn" 
+      [disabled]="currentPage === 1"
+      (click)="goToFirst()"
+      aria-label="Go to first page">
+      <span class="se-pagination__nav-icon se-pagination__nav-icon--first"></span>
+    </button>
+    
+    <button 
+      class="se-pagination__nav-btn" 
+      [disabled]="currentPage === 1"
+      (click)="goToPrevious()"
+      aria-label="Go to previous page">
+      <span class="se-pagination__nav-icon se-pagination__nav-icon--prev"></span>
+    </button>
+    
+    <!-- Page indicator - Simple -->
+    <div *ngIf="!showPageButtons" class="se-pagination__page-indicator">
+      <span *ngIf="showPageSelect">Page</span>
+      <div *ngIf="showPageSelect" class="se-pagination__select-wrapper">
+        <select 
+          class="se-pagination__select" 
+          [ngModel]="currentPage" 
+          (ngModelChange)="selectPage($event)">
+          <option *ngFor="let page of [].constructor(totalPages); let i = index" [value]="i + 1">
+            {{ i + 1 }}
+          </option>
+        </select>
+        <span class="se-pagination__select-arrow"></span>
+      </div>
+      <span>/{{ totalPages }}</span>
+    </div>
+    
+    <!-- Page buttons - Complex -->
+    <div *ngIf="showPageButtons" class="se-pagination__pages">
+      <button 
+        *ngFor="let page of visiblePages"
+        class="se-pagination__page-btn"
+        [class.se-pagination__page-btn--active]="page === currentPage"
+        (click)="selectPage(page)">
+        {{ page }}
+      </button>
+      <span *ngIf="visiblePages.length > 0 && visiblePages[visiblePages.length - 1] < totalPages - 1">...</span>
+      <button 
+        *ngIf="visiblePages.length > 0 && visiblePages[visiblePages.length - 1] < totalPages"
+        class="se-pagination__page-btn"
+        [class.se-pagination__page-btn--active]="totalPages === currentPage"
+        (click)="selectPage(totalPages)">
+        {{ totalPages }}
+      </button>
+    </div>
+    
+    <!-- Go to page input -->
+    <div *ngIf="showGoToPage" class="se-pagination__go-to-page">
+      <span>Go to Page</span>
+      <input 
+        type="number" 
+        class="se-pagination__go-to-input" 
+        min="1" 
+        [max]="totalPages" 
+        [ngModel]="goToPage" 
+        (input)="handleGoToPageInput($event)">
+      <button 
+        class="se-pagination__go-btn" 
+        (click)="navigateToPage()"
+        aria-label="Go to specified page">
+        <span class="se-pagination__nav-icon se-pagination__nav-icon--go"></span>
+      </button>
+    </div>
+    
+    <!-- Next page and Last page buttons -->
+    <button 
+      class="se-pagination__nav-btn" 
+      [disabled]="currentPage === totalPages"
+      (click)="goToNext()"
+      aria-label="Go to next page">
+      <span class="se-pagination__nav-icon se-pagination__nav-icon--next"></span>
+    </button>
+    
+    <button 
+      *ngIf="showEdgeNavigation" 
+      class="se-pagination__nav-btn" 
+      [disabled]="currentPage === totalPages"
+      (click)="goToLast()"
+      aria-label="Go to last page">
+      <span class="se-pagination__nav-icon se-pagination__nav-icon--last"></span>
+    </button>
+  </div>
